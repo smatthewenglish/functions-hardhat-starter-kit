@@ -52,7 +52,7 @@ task("functions-request", "Initiates a request from a Functions client contract"
     }
 
     // Attach to the required contracts
-    const clientContractFactory = await ethers.getContractFactory("FunctionsConsumer")
+    const clientContractFactory = await ethers.getContractFactory("AaveMortgage")
     const clientContract = clientContractFactory.attach(contractAddr)
     const OracleFactory = await ethers.getContractFactory("contracts/dev/functions/FunctionsOracle.sol:FunctionsOracle")
     const oracle = await OracleFactory.attach(networks[network.name]["functionsOracleProxy"])
@@ -114,8 +114,6 @@ task("functions-request", "Initiates a request from a Functions client contract"
       )
     }
 
-    console.log("HELLO WORLD")
-
     const transactionEstimateGas = await clientContract.estimateGas.executeRequest(
       requestConfig.source,
       requestConfig.secrets && Object.keys(requestConfig.secrets).length > 0 ? simulatedSecretsURLBytes : [],
@@ -144,7 +142,7 @@ task("functions-request", "Initiates a request from a Functions client contract"
     const store = new RequestStore(hre.network.config.chainId, network.name, "consumer")
 
     const spinner = utils.spin({
-      text: `Submitting transaction for FunctionsConsumer contract ${contractAddr} on network ${network.name}`,
+      text: `Submitting transaction for AaveMortgage contract ${contractAddr} on network ${network.name}`,
     })
 
     // Use a promise to wait & listen for the fulfillment event before returning
