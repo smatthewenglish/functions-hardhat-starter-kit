@@ -114,6 +114,8 @@ task("functions-request", "Initiates a request from a Functions client contract"
       )
     }
 
+    console.log("HELLO WORLD")
+
     const transactionEstimateGas = await clientContract.estimateGas.executeRequest(
       requestConfig.source,
       requestConfig.secrets && Object.keys(requestConfig.secrets).length > 0 ? simulatedSecretsURLBytes : [],

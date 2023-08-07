@@ -50,6 +50,10 @@ module.exports = {
           ]
         : [],
     },
+    sepolia: {
+      url: "https://eth-sepolia.g.alchemy.com/v2/AwsrUzCWvdZTZsvyKJQ0uD2A4JyVyCDZ",
+      accounts: [process.env.PRIVATE_KEY],
+    },
     ...networks,
   },
   etherscan: {
